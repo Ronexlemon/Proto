@@ -36,9 +36,15 @@ func (s*Server) GetMenu(menuRequest *pb.MenuRequest,srv  pb.CoffeShop_GetMenuSer
 
 	
 }
-func (s *Server) PlaceOrder(context.Context, *pb.Order) (*pb.Receipt, error) {
+func (s *Server) PlaceOrder(ctx context.Context,order *pb.Order) (*pb.Receipt, error) {
+	return &pb.Receipt{Id: "123458A",},nil
+
 	
 }
-func (s *Server) GetOrderStatus(context.Context, *pb.Receipt) (*pb.OrderStatus, error) {
+func (s *Server) GetOrderStatus(ctx context.Context,receipt *pb.Receipt) (*pb.OrderStatus, error) {
+
+	return &pb.OrderStatus{OrderId: receipt.Id,
+		Status: "IN PROGRESS",}  ,nil
+
 	
 }
