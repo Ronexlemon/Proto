@@ -2,6 +2,9 @@ package main
 
 import (
 	"context"
+	"log"
+	"net"
+
 	pb "github.com/ronexlemon/Proto/services/genproto"
 	"google.golang.org/grpc"
 )
@@ -47,4 +50,18 @@ func (s *Server) GetOrderStatus(ctx context.Context,receipt *pb.Receipt) (*pb.Or
 		Status: "IN PROGRESS",}  ,nil
 
 	
+}
+
+func main(){
+	lis,err:= net.Listen("tcp", ":9090")
+	if err !=nil{
+		log.Fatalf("Failed to listen %v",err)
+	}
+	grpcServer := grpc.NewServer()
+
+	pb.RegisterCoffeShopServer(grpcServer,&Server{})
+
+	if err = grpcServer.Serve(lis); err !=nil{
+		log.Fatalf("Failed to serve %v",err)
+	}
 }
