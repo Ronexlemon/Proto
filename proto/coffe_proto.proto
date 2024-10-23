@@ -2,4 +2,22 @@ syntax ="proto3";
 
 option go_package = "github.com/RonexLemon/Proto/proto";
 
-servic
+service CoffeShop{
+    rpc GetMenu(MenuRequest) returns (stream Menu){}
+    rpc PlaceOrder(Order) returns (Receipt){}
+    rpc GetOrderStatus(Receipt) returns (OrderStatus){}
+}
+
+message MenuRequest{
+
+}
+
+message Menu{
+
+}
+
+message Order{
+
+}
+message Receipt{}
+message OrderStatus{}
