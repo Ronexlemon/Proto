@@ -3,21 +3,32 @@ syntax ="proto3";
 option go_package = "github.com/RonexLemon/Proto/proto";
 
 service CoffeShop{
-    rpc GetMenu(MenuRequest) returns (stream Menu){}
-    rpc PlaceOrder(Order) returns (Receipt){}
-    rpc GetOrderStatus(Receipt) returns (OrderStatus){}
+    rpc GetMenu(MenuRequest) returns (stream Menu);
+    rpc PlaceOrder(Order) returns (Receipt);
+    rpc GetOrderStatus(Receipt) returns (OrderStatus);
+}
+message Item{
+    string id =1;
+    string name = 2;
+    int64 price = 3;
+    int64 quantity = 4;
 }
 
-message MenuRequest{
-
-}
+message MenuRequest{}
 
 message Menu{
+    repeated Item item = 1; //repeated its an List
 
 }
 
 message Order{
+   repeated Item items = 1;
 
 }
-message Receipt{}
-message OrderStatus{}
+message Receipt{
+    string id =1;
+}
+message OrderStatus{
+    string orderId =1;
+    string status=2;
+}
