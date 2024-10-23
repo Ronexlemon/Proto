@@ -4,7 +4,7 @@
 // - protoc             v3.12.4
 // source: coffee_proto.proto
 
-package proto
+package Proto
 
 import (
 	context "context"

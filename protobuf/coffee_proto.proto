@@ -1,6 +1,6 @@
 syntax ="proto3";
 
-option go_package = "github.com/RonexLemon/Proto/proto";
+option go_package = "github.com/ronexlemon/Proto";
 
 service CoffeShop{
     rpc GetMenu(MenuRequest) returns (stream Menu);
