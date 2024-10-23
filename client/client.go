@@ -1,4 +1,4 @@
-package client
+package main
 
 import (
 	"context"
@@ -12,6 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 func main() {
+	start := time.Now()
 	conn, err := grpc.NewClient("localhost:9090",grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err !=nil{
 		log.Fatalf("Failed to connect to grpc server %v",err)
@@ -58,4 +59,5 @@ func main() {
 		log.Fatalf("Failed to get order status %v",err)
 		}
 		fmt.Println("Order status ",status)
+		fmt.Println("Time Taken",time.Since(start))
 }
