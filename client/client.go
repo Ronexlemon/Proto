@@ -52,4 +52,10 @@ func main() {
 		log.Fatalf("Failed to place order %v",err)
 	}
 	fmt.Println("Receipt ",receipt)
+
+	status,err := client.GetOrderStatus(ctx,receipt)
+	if err != nil{
+		log.Fatalf("Failed to get order status %v",err)
+		}
+		fmt.Println("Order status ",status)
 }
