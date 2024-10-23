@@ -47,4 +47,9 @@ func main() {
 	}()
 	<-done
 	fmt.Println("Items ",items)
+	receipt,err := client.PlaceOrder(ctx,&pb.Order{Items: items})
+	if err != nil{
+		log.Fatalf("Failed to place order %v",err)
+	}
+	fmt.Println("Receipt ",receipt)
 }
